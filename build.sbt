@@ -1,9 +1,8 @@
 
 
 // Our Scala versions.
-lazy val `scala-2.12` = "2.12.13"
 lazy val `scala-2.13` = "2.13.6"
-lazy val `scala-3.0`  = "3.0.0"
+lazy val `scala-3`    = "3.0.0"
 
 // This is used in a couple places
 lazy val fs2Version = "3.0.5"
@@ -43,7 +42,7 @@ lazy val commonSettings = Seq(
 
   // Compilation
   scalaVersion       := `scala-2.13`,
-  crossScalaVersions := Seq(`scala-2.12`, `scala-2.13`, `scala-3.0`),
+  crossScalaVersions := Seq(`scala-2.13`, `scala-3`),
   scalacOptions -= "-language:experimental.macros", // doesn't work cross-version
   Compile / doc / scalacOptions --= Seq("-Xfatal-warnings"),
   Compile / doc / scalacOptions ++= Seq(
@@ -109,6 +108,7 @@ lazy val core = project
       "org.scodec"             %% "scodec-cats"             % "1.1.0",
       "org.tpolecat"           %% "natchez-core"            % natchezVersion,
       "org.tpolecat"           %% "sourcepos"               % "1.0.0",
+      "org.tpolecat"           %% "pool-party"              % "0.0.3+0-ccfdf461+20210708-1136-SNAPSHOT",
       "com.ongres.scram"        % "client"                  % "2.1",
       "org.scala-lang.modules" %% "scala-collection-compat" % "2.4.4",
     ) ++ Seq(
